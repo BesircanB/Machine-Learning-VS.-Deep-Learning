@@ -3,15 +3,16 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 # Current folder (where exercise4.py is)
 dataset_path = "."  # LAB-10 folder
 
 # Names of the category folders
 categories = ["cats", "dogs"]
 
-# Initialize feature matrix X and label vector y
+# Initialize feature matrix X and label vector Y
 X = []
-y = []
+Y = []
 
 # Loop through each category
 for label, category in enumerate(categories):
@@ -33,22 +34,22 @@ for label, category in enumerate(categories):
             # Flatten the image and add to feature matrix
             X.append(resized.flatten())
             # Add label (0 for cats, 1 for dogs)
-            y.append(label)
+            Y.append(label)
 
 # Convert lists to NumPy arrays
 X = np.array(X)
-y = np.array(y)
-
+Y = np.array(Y)
+    
 # Print shapes
 print(f"Feature matrix X shape: {X.shape}")
-print(f"Label vector y shape: {y.shape}")
+print(f"Label vector Y shape: {Y.shape}")
 
 # Display first 4 images as a sanity check
 plt.figure(figsize=(10, 5))
 for i in range(4):
     plt.subplot(1, 4, i+1)
     plt.imshow(X[i].reshape(100, 100), cmap="gray")
-    plt.title(f"Label: {y[i]}")
+    plt.title(f"Label: {Y[i]}")
     plt.axis("off")
 plt.tight_layout()
 plt.show()
